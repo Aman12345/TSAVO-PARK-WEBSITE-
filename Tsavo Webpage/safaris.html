@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="tour, wild, park" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Tsavo Park</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="js/scripts.js"></script>
+  </head>
+  <body>
+    <!-- HEADER ELEMENT -->
+    <header>
+      <img
+        src="assets/images/logo.png"
+        alt="Logo"
+        width="60"
+        height="60"
+        class="logo"
+      />
+      <ul class="navbar">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li id="selected-nav-item"><a href="safaris.html">Safaris</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </header>
+    <!-- CONTENT START -->
+    <div class="banner-container-safaris">
+      <h1>Safaris</h1>
+    </div>
+
+    <div style="padding: 20px 30px">
+      <h1 class="heading-safaris">Safaris from our partners:</h1>
+    </div>
+
+    <div style="display: flex">
+      <div class="grid-container-safaris">
+        <div class="info-container-card">
+          <img src="assets/images/m1.jpeg" alt="Avatar" style="width: 100%" />
+          <div class="img-container-txt">
+            <h4>8-Day Kenya South Safari</h4>
+          </div>
+          <div class="content">
+            <h4 class="card-item-title"><b>450$ to 750$ USD</b></h4>
+            <p><b>Kenya:</b> Private tour, Mid-range, Lodge</p>
+          </div>
+        </div>
+        <div class="info-container-card">
+          <img src="assets/images/m2.jpeg" alt="Avatar" style="width: 100%" />
+          <div class="img-container-txt">
+            <h4>4-Day On a Safari to Tsavo West, Amboseli and Tsavo East</h4>
+          </div>
+          <div class="content">
+            <h4 class="card-item-title"><b>758$ to 980$ USD</b></h4>
+            <p><b>Kenya:</b> Private tour, Mid-range, Lodge</p>
+          </div>
+        </div>
+        <div class="info-container-card">
+          <img src="assets/images/m3.jpeg" alt="Avatar" style="width: 100%" />
+          <div class="img-container-txt">
+            <h4>6-Day Amboseli Tsavo West and Tsavo East Safari</h4>
+          </div>
+          <div class="content">
+            <h4 class="card-item-title"><b>1000$ to 1500$ USD</b></h4>
+            <p><b>Kenya:</b> Private tour, Mid-range, Lodge</p>
+          </div>
+        </div>
+        <div class="info-container-card">
+          <img src="assets/images/m4.jpeg" alt="Avatar" style="width: 100%" />
+          <div class="img-container-txt">
+            <h4>3-Day Tsavo East & West Midrange Safari</h4>
+          </div>
+          <div class="content">
+            <h4 class="card-item-title"><b>2000$ to 2500$ USD</b></h4>
+            <p><b>Kenya:</b> Private tour, Mid-range, Lodge</p>
+          </div>
+        </div>
+        <div class="info-container-card">
+          <img src="assets/images/j1.jpeg" alt="Avatar" style="width: 100%" />
+          <div class="img-container-txt">
+            <h4>3-Day Tsavo East & West Midrange Safari</h4>
+          </div>
+          <div class="content">
+            <h4 class="card-item-title"><b>4000$ to 7000$ USD</b></h4>
+            <p><b>Kenya:</b> Private tour, Mid-range, Lodge</p>
+          </div>
+        </div>
+        <div class="info-container-card">
+          <img src="assets/images/j3.jpeg" alt="Avatar" style="width: 100%" />
+          <div class="img-container-txt">
+            <h4>3-Day Tsavo East & West Midrange Safari</h4>
+          </div>
+          <div class="content">
+            <h4 class="card-item-title"><b>5000$ to 10000$ USD</b></h4>
+            <p><b>Kenya:</b> Private tour, Mid-range, Lodge</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="right-card-container">
+          <div class="custom-select" style="width: 200px">
+            <span class="option-label">Select Country:</span>
+            <select>
+              <option value="Kenya">Kenya</option>
+              <option value="Zambia">Zambia</option>
+              <option value="Bostwana">Bostwana</option>
+            </select>
+            <span class="option-label">Select Destination:</span>
+            <select>
+              <option value="1">Tsavo National Park</option>
+              <option value="2">Amboseli National Park</option>
+              <option value="3">Nairobi City</option>
+              <option value="4">Diani Beach</option>
+            </select>
+            <span class="option-label">Number of safari days:</span>
+            <div>
+              <button
+                class="btn-action"
+                id="btn-dec"
+                onclick="handleDayChange(-1)"
+                value="Decrease Value"
+              >
+                -
+              </button>
+              <input type="number" id="number" value="1" />
+              <button
+                class="btn-action"
+                id="btn-inc"
+                onclick="handleDayChange(1)"
+                value="Increase Value"
+              >
+                +
+              </button>
+            </div>
+            <br />
+            <span class="option-label">Budget:</span>
+            <select>
+              <option value="1">100$ - 200$</option>
+              <option value="2">500$ - 1000$</option>
+              <option value="3">1200$ - 2000$</option>
+              <option value="4">2500$ - 5000$</option>
+              <option value="5">5000$ - 10000$</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT END -->
+
+    <div class="sub-footer">
+      <div class="footer-brand-container">
+        <img src="assets/images/logo.png" width="200" height="200" />
+        <p>
+          Wilderness Bookings is a listings platform. We specialise in targeted
+          safari destinations allowing properties and safari operators to
+          display their products to targeted audience.
+          <br /><br />
+          As a result, our users get to contact these companies directly.
+        </p>
+      </div>
+      <ul>
+        <li class="link-heading">Quicklinks</li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+
+      <ul style="width: 15%">
+        <li class="link-heading">Popular Spots</li>
+        <li><a href="#">Maasai Mara</a></li>
+        <li><a href="#">Amboseli Park</a></li>
+        <li><a href="#">Serengeti</a></li>
+      </ul>
+
+      <ul>
+        <li class="link-heading">Contact Us</li>
+        <li>Please feel free to contact us about anything on this website</li>
+        <li>Wilderness Bookings</li>
+        <li>
+          <a href="mailto:info@tsavopark.com">info@tsavopark.com</a>
+        </li>
+        <li>+254 (0)716 123456</li>
+      </ul>
+    </div>
+    <!-- FOOTER ELEMENT -->
+    <footer>
+      <p>
+        &copy; All rights reserved. Tsavopark.com 2022
+        <a href="mailto:info@tsavopark.com">info@tsavopark.com</a>
+      </p>
+      <div class="social-icon">
+        <img src="Assets/images/fb.png" />
+        <img src="Assets/images/insta.png" />
+        <img src="Assets/images/twitter.png" />
+      </div>
+    </footer>
+  </body>
+</html>
