@@ -1,0 +1,26 @@
+{
+    "name": "TSAVO-PARK-WEBSITE-",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Aman12345/TSAVO-PARK-WEBSITE-.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Aman12345/TSAVO-PARK-WEBSITE-/issues"
+    },
+    "homepage": "https://github.com/Aman12345/TSAVO-PARK-WEBSITE-#readme",
+    "dependencies": {
+        "ejs": "^3.1.7",
+        "express": "^4.18.1",
+        "requirejs": "^2.3.6"
+    }
+}
