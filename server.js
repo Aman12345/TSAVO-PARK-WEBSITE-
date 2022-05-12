@@ -33,6 +33,31 @@ app.get("/safaris", (req, res) => {
     console.log("WELCOME TO THE SAFARI PAGE");
 });
 
-app.listen(port, () => {
-    console.log(`App listening on ${port}`);
+//error page
+app.get("*", (req, res) => {
+    res.render("pages/error");
+});
+
+app.use((req, res, next) => {
+    const error = new Error("Not found");
+    error.status = 404;
+    next(error);
+});
+
+// error handler middleware
+app.use((error, req, res, next) => {
+    res.status(error.status || 500).send({
+        error: {
+            status: error.status || 500,
+            message: error.message || "Internal Server Error",
+        },
+    });
+});
+
+app.listen(port, (err) => {
+    if (err) {
+        console.log(`error while starting the server on ${port}`);
+    } else {
+        console.log(`App listening on ${port}`);
+    }
 });
