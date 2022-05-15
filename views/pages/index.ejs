@@ -8,6 +8,10 @@
     <title>Tsavo Park</title>
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!--font awesome-->
+    <script src="https://kit.fontawesome.com/1985be3ec0.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
@@ -15,38 +19,43 @@
     <header>
         <img src="assets/images/logo.png" alt="logo" width="60" height="60" class="logo" />
         <ul class="navbar">
-            <li id="selected-nav-item">
-                <a href="#">Home</a>
-            </li>
-            <li><a href="safaris.html">Safaris</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li id="selected-nav-item"><a href="/">Home</a></li>
+            <li><a href="/safaris">Safaris</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><button class="addbtn" id="addbtn"><i class="fas fa-plus"></i>ADD NOTE</button></li>
         </ul>
     </header>
     <!-- CONTENT START -->
     <div style="height: 500px">
         <video width="100%" height="500" loop autoplay muted class="banner-video">
         <source src="assets/videos/intro.mp4" type="video/mp4" />
-      </video>
+        </video>
     </div>
     <div class="trends">
         <h3>Targeted. Unbiased. Direct.</h3>
     </div>
-
     <div class="container">
         <div class="site-info-container">
-            <img src="assets/images/loc.png" />
+            <!--<img src="assets/images/loc.png" />-->
             <div class="site-info-container-txt">
-                <span style="color: #444411">WELCOME TO</span>
+                <div id="index-site-info-span" style="color: #444411">WELCOME TO</div>
+                <!--<div class="notes">
+                        <div class="tools">
+                            <button class="edit"><i class="fas fa-edit"></i></button>
+                            <button class="delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                        <textarea></textarea>
+                    </div>-->
                 <h1>Tsavo National Park</h1>
-                <h3>Kenya's largest national park</h3>
+                <h3>Kenya' s largest national park</h3>
                 <p>
                     Tsavo is made up of two separate parks, Tsavo East National Park and Tsavo West National Park. Located in Coast Province of Kenya in between Nairobi City and Mombasa. <br /><br /> Tsavo is nearly 22,000km2, being the largest national
                     park in Kenya and one of the largest in the world. The park was split into two due to the railway going from Mombasa to the interior of Kenya.
 
                     <br /><br /><b>Accommodation:</b> There are plenty of places to stay in the two parks. These range greatly and most of them have a water hole close to the property making game viewing easier.
-                    <br /><br /><b>Size:</b> Tsavo East National Park is one of the oldest parks in Kenya, located South East of Kenya near the Town of Voi in the Taita-Taveta District of Coast Province, inland from the Coast, it is 13,747 sq.km. <br
-                    /><br /> While the Tsavo West National Park is also located in the Coast Province of Kenya covering an area of 9,065 sq.km. The park was opened in April 1948.
+                    <br /><br /><b>Size:</b> Tsavo East National Park is one of the oldest parks in Kenya, located South East of Kenya near the Town of Voi in the Taita-Taveta District of Coast Province, inland from the Coast, it is 13,747 sq.km.
+                    <br /><br /> While the Tsavo West National Park is also located in the Coast Province of Kenya covering an area of 9,065 sq.km. The park was opened in April 1948.
                     <br /><br />The slightly larger Tsavo East is generally flat, with dry plains across which the Galana River flows. Other features include the Yatta Plateau and Lugard Falls. <br /><br /> Tsavo West National Park is more mountainous
                     and wetter than its counterpart, with swamps, Lake Jipe and the Mzima Springs. It is known for bird life and for its large mammal’s e.g. black rhino, Cape buffalo, elephant, leopard, hippo and Masai lion. There are also other smaller
                     animals that can be spotted in the park, such as the bush baby, hartebeest, lesser kudu and Maasai giraffe.
@@ -192,6 +201,84 @@
             <img src="assets/images/twitter.png" />
         </div>
     </footer>
+    <script>
+        const spanIndexPoint = document.getElementById('index-site-info-span');
+        const addBtn = document.getElementById('addbtn');
+        //our notes constant variable 
+        const notes = JSON.parse(localStorage.getItem('notes'))
+
+        //if notes exsist then we have to add those notes to the DOM
+        if (notes) {
+            notes.forEach(note => addNewNote(note))
+        }
+
+        addBtn.addEventListener('click', () => addNewNote());
+
+        function addNewNote(text = 'Hello!') {
+            const note = document.createElement('div');
+            note.classList.add('notes');
+
+            note.innerHTML = `
+                            <div class="tools">
+                                <button class="edit"><i class="fas fa-edit"></i></button>
+                                <button class="delete"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                            <div class="main${text ? "": "hidden"}"></div>
+                            <textarea class="${text ? "hidden":""}"></textarea>`
+
+
+            const editBtn = note.querySelector('.edit');
+            const deleteBtn = note.querySelector('.delete');
+            const main = note.querySelector('.main');
+            const textArea = note.querySelector('textArea');
+
+
+            textArea.value = text
+            main.innerHTML = text
+
+            deleteBtn.addEventListener('click', () => {
+                note.remove();
+
+
+                //delete the LS when we call delete 
+                updateLS();
+            })
+
+            editBtn.addEventListener('click', () => {
+                main.classList.toggle('hidden');
+                textArea.classList.toggle('hidden');
+            })
+
+            textArea.addEventListener('input', (e) => {
+                const {
+                    value
+                } = e.target
+
+                main.innerHTML = value
+
+                updateLS()
+            })
+
+            spanIndexPoint.after(note)
+                //$(note).insertAfter($("index-site-info-span"));
+        }
+        //localStroage.setItem(key,value)
+        //localStorage.getItem(key,value)
+        function updateLS() {
+            const notesText = document.querySelectorAll('textArea')
+
+            const notes = []
+
+            //storing as a stringified array 
+            //check your localStorage in devTools
+            notesText.forEach(note => notes.push(note.value));
+
+            //you need to stringfy those notes in order to actually store them in a readable format for us to utilize in our application TAB
+            localStorage.setItem('notes', JSON.stringify(notes))
+                //localStorage.clear() button 
+                //vs sessionStorage 
+        }
+    </script>
 </body>
 
 </html>

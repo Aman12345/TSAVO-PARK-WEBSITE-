@@ -16,11 +16,11 @@
         <img src="assets/images/logo.png" alt="Logo" width="60" height="60" class="logo" />
         <ul class="navbar">
             <li>
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
             </li>
-            <li><a href="safaris.html">Safaris</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li id="selected-nav-item"><a href="#">Contact</a></li>
+            <li><a href="/safaris">Safaris</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li id="selected-nav-item"><a href="/contact">Contact</a></li>
         </ul>
     </header>
     <!-- CONTENT START -->
@@ -31,26 +31,27 @@
 
     <div class="contact-form-container">
         <h1>Get in touch</h1>
-        <form action="#" method="POST">
+        <form action="/generalInquiry" method="POST">
             <div style="display: flex; justify-content: space-between">
                 <div style="width: 50%">
                     <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="firstname" placeholder="First Name" />
+                    <input type="text" id="fname" name="firstname" placeholder="First Name" required />
                 </div>
 
                 <div style="width: 48%">
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lastname" placeholder="Last Name" />
+                    <input type="text" id="lname" name="lastname" placeholder="Last Name" required/>
                 </div>
             </div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Email Address" />
+            <input type="email" id="email" name="email" placeholder="Email Address" required/>
             <label for="country">Country</label>
             <select id="country" name="country">
           <option value="">Select Country</option>
           <option value="dubai">Dubai</option>
           <option value="usa">USA</option>
           <option value="canada">Canada</option>
+          <option value="africa">Africa</option>
         </select>
             <br /><br />
             <label for="question">Have you ever visited Tsavo Park before?</label>
@@ -61,7 +62,6 @@
             <br />
             <label for="query">Subject</label>
             <textarea id="query" name="query" placeholder="Message" style="height: 250px"></textarea>
-
             <input type="submit" value="Submit" />
         </form>
     </div>

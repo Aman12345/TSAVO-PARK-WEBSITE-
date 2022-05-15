@@ -1,15 +1,47 @@
-import e from "express";
-const app = e();
-const port = 5000;
+//ctrl + C to stop the server-side client express/node
+const express = require("express");
+const app = express();
+//use the process.environment PORT# or 5000
+const port = process.env.PORT || 5000;
+
+//extra libraries
+var createError = require("http-errors");
+var path = require("path");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
+var bodyParser = require("body-parser");
+var flash = require("express-flash");
+var session = require("express-session");
+
+var mysql = require("mysql");
+const connection = mysql.createConnection({
+    host: "us-cdbr-east-05.cleardb.net",
+    user: "bcb3e6a1abf395",
+    password: "fab8e7c7",
+    database: "heroku_393a117a1d1c56b",
+});
 
 //set the view engine to ejs
 app.set("view engine", "ejs");
 
-//in order to use css we need to create a .use
-app.use(e.static("public"));
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
-//use the res.render method in expresss to render the HTML as EJS
-//index page
+//connection to our database
+/*connection.query('SELECT * FROM inquiry WHERE id="0"', (error, rows) => {
+    if (error) throw error;
+    if (!error) {
+        console.log(rows);
+    }
+});*/
+
+//in order to use css we need to create a .use
+app.use(express.static("public"));
+
+//use the res.render method in express to render the HTML as EJS
+//index page or home page
 app.get("/", (req, res) => {
     res.render("pages/index");
     console.log("WELCOME TO THE HOME PAGE");
@@ -19,6 +51,20 @@ app.get("/", (req, res) => {
 app.get("/contact", (req, res) => {
     res.render("pages/contact");
     console.log("WELCOME TO THE CONTACT PAGE");
+});
+
+app.post("/generalInquiry", (req, res, next) => {
+    var f_name = req.body.firstname;
+    var l_name = req.body.lastname;
+    var email = req.body.email;
+    var query = req.body.query;
+
+    var sql = `INSERT INTO inquiry(fname,lname,email,query) VALUES("${f_name}","${l_name}","${email}","${query}")`;
+    connection.query(sql, function(error, results) {
+        if (error) throw error;
+        console.log("record inserted shown on backend");
+        res.redirect("/");
+    });
 });
 
 //about page
