@@ -1,33 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8" />
     <meta name="keywords" content="tour, wild, park" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Tsavo Park</title>
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="css/about.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="scripts.js"></script>
 </head>
 
 <body>
     <!-- HEADER ELEMENT -->
     <header>
         <img src="assets/images/logo.png" alt="Logo" width="60" height="60" class="logo" />
+
+
+
         <div class="navbar" id="nav">
             <ul>
                 <li>
-                    <a href="/">Home</a>
+                    <a href="index.html">Home</a>
                 </li>
-                <li><a href="/safaris">Safaris</a></li>
-                <li id="selected-nav-item"><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="safaris.html">Safaris</a></li>
+                <li id="selected-nav-item"><a href="#">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <button class="icon" id="toggle"><div class="line line1"></div>
           <div class="line line2"></div>
         </button>
         </div>
     </header>
+
+
+
+
     <!-- CONTENT START -->
     <div class="banner-container">
         <h1>About</h1>
@@ -37,7 +46,7 @@
     </div>
     <div class="grid-container">
         <div class="photo-container">
-            <img src="assets/images/j21.png" class="banner-img" alt="Banner Image" />
+            <img src="Assets/images/j21.png" class="banner-img" alt="Banner Image" />
         </div>
         <div class="about-container">
             <p>
@@ -54,7 +63,7 @@
 
     <div class="sub-footer">
         <div class="footer-brand-container">
-            <img src="assets/images/logo.png" width="200" height="200" title="logo" alt="logo" />
+            <img src="assets/images/logo.png" width="200" height="200" />
             <p>
                 Wilderness Bookings is a listings platform. We specialise in targeted safari destinations allowing properties and safari operators to display their products to targeted audience.
                 <br /><br /> As a result, our users get to contact these companies directly.
@@ -62,8 +71,8 @@
         </div>
         <ul>
             <li class="link-heading">Quicklinks</li>
-            <li><a href="about.ejs">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
         </ul>
 
         <ul style="width: 15%">
@@ -90,17 +99,12 @@
             <a href="mailto:info@tsavopark.com">info@tsavopark.com</a>
         </p>
         <div class="social-icon">
-            <img src="assets/images/fb.png" />
-            <img src="assets/images/insta.png" />
-            <img src="assets/images/twitter.png" />
+            <img src="Assets/images/fb.png" />
+            <img src="Assets/images/insta.png" />
+            <img src="Assets/images/twitter.png" />
         </div>
     </footer>
-    <script>
-        const btn = document.querySelector('.icon');
-        const nav = document.querySelector('.navbar');
 
-        btn.addEventListener('click', () => nav.classList.toggle('active'));
-    </script>
 </body>
 
 </html>

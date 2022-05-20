@@ -14,6 +14,7 @@ var flash = require("express-flash");
 var session = require("express-session");
 
 var mysql = require("mysql");
+const { response } = require("express");
 const connection = mysql.createConnection({
     host: "us-cdbr-east-05.cleardb.net",
     user: "bcb3e6a1abf395",
